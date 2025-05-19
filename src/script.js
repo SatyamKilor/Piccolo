@@ -2,8 +2,9 @@
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/all";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 // Lenis js
 const lenisJs = () => {
@@ -350,8 +351,45 @@ fran.addEventListener("click", function () {
 
 //Page 2
 const page2Animations = () => {
-  
-};
+  gsap.set("#page2 .split", { opacity: 1 });
+document.fonts.ready.then(() => {
+  let container = document.querySelector("#page2");
+  let splits = gsap.utils.toArray("#page2 .split");
+
+  splits.forEach((split) => {
+    SplitText.create(split, {
+      type: "words,lines",
+      mask: "lines",
+      linesClass: "line",
+      autoSplit: true,
+      onSplit: (instance) => {
+        return gsap.from(instance.lines, {
+          yPercent: 120,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: container,
+            scrub: true,
+            start: "top 55%",
+            end: "top 10%"
+          }
+        });
+      }
+    });
+  });
+
+  gsap.from("#page2 .imgContainer",{
+    opacity: 0,
+    scrollTrigger:{
+      trigger: container,
+      scrub: true,
+      start: "top 55%",
+      end: "top 10%",
+
+    }
+  });
+});
+
+}
 page2Animations();
 
 //Page 3
@@ -359,23 +397,20 @@ const page3Animations = () =>{
  var cards = document.querySelectorAll(".prodCard");
 
 cards.forEach((card) => {
-  var img = card.querySelector("img");
-  var originalImg = img.src;
+  var altImg = card.querySelector(".altProdImg");
 
   card.addEventListener("mouseenter", () => {
-    img.style.opacity = 0; // Start fade out
-    setTimeout(() => {
-      img.src = "/imgs/coffee2.png"; // Change image
-      img.style.opacity = 1; // Fade in
-    }, 300); // Match the CSS transition time (300ms)
+
+    gsap.to(altImg, {
+      opacity: 1
+    }, "a");
   });
 
   card.addEventListener("mouseleave", () => {
-    img.style.opacity = 0; // Fade out again
-    setTimeout(() => {
-      img.src = originalImg; // Revert to original
-      img.style.opacity = 1; // Fade in
-    }, 300);
+
+    gsap.to(altImg, {
+      opacity: 0,
+    }, "a");
   });
 });
 

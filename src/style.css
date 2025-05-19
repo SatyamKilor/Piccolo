@@ -496,6 +496,17 @@ nav {
   margin-bottom: 1vw;
 }
 
+.split {
+  opacity: 0;
+  text-align: center;
+  will-change: transform;
+}
+
+.split * {
+  will-change: transform;
+}
+
+
 .right{
   height: 100%;
   width: 45%;
@@ -510,7 +521,7 @@ nav {
   background-color: black;
   border-radius: 100px;
   overflow: hidden;
-
+  /* opacity: 0; */
 }
 
 .imgContainer > img{
@@ -520,6 +531,7 @@ nav {
   object-fit: cover;
   object-position: center;
   transition: all ease 0.3s;
+  
 }
 
 .imgContainer > img:hover{
@@ -565,7 +577,7 @@ nav {
 .products{
   height: 70%;
   width: 100%;
-  color: white;
+  color: var(--main-brand-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -573,18 +585,31 @@ nav {
 }
 
 .prodCard{
+  position: relative;
   height: 100%;
   width: 30%;
   display: flex;
   flex-direction: column;
+  background-color: var(--brown-color-light);
+  border-radius: 20px;
+  padding: 1vw 1vw;
+  cursor: pointer;
 }
 
 .prodCard > img{
   height: 80%;
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease;
   opacity: 1;
+  border-radius: 10px;
 }
 
+.prodCard .altProdImg{
+    height: 76%;
+    width: 93%;
+    position: absolute;
+    opacity: 0;
+    border-radius: 10px;
+}
 
 .prodCard h1{
   font-family: subheading;
@@ -604,6 +629,7 @@ nav {
   justify-content: center;
   align-items: center;
   margin-bottom: 5vw;
+  margin-top: 5vw;
 }
 
 .shopNow > a{
@@ -807,7 +833,6 @@ nav {
   top: -60%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 .col1 .imgContainer2{
@@ -815,7 +840,6 @@ nav {
   top: 5%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 .col1 .imgContainer3{
@@ -823,7 +847,6 @@ nav {
   top: 70%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 .col2 .imgContainer1{
@@ -831,7 +854,6 @@ nav {
   top: -50%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 
@@ -840,7 +862,6 @@ nav {
   top: 90%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 .col3 .imgContainer1{
@@ -848,7 +869,6 @@ nav {
   top: -60%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 .col3 .imgContainer2{
@@ -856,7 +876,6 @@ nav {
   top: 5%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 .col3 .imgContainer3{
@@ -864,7 +883,6 @@ nav {
   top: 70%;
   height: 60vh;
   width: 100%;
-  background-color: red;
 }
 
 .col1 .imgContainer1 img{
@@ -989,13 +1007,13 @@ nav {
 
 #footer .logo img{
   height: 24vw;
-  width: 20vw;
+  width: 22vw;
 }
 
 #footer .CTAs{
   display: flex;
   gap: 3vw;
-  margin-top: 3vw;
+  margin-top: 5vw;
 }
 
 #footer .CTAs a{
@@ -1018,14 +1036,14 @@ nav {
 #footer .policies{
   display: flex;
   gap: 3vw;
-  margin-top: 3vw;
+  margin-top: 6vw;
 }
 
 #footer .policies a{
   text-decoration: none;
   color: black;
   font-family: lightfont;
-  font-size: 1.5vw;
+  font-size: 0.8vw;
 }
 
 @media (max-width: 768px) {
