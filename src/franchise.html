@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PICCOLO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="page4">
+          <div class="textSec">
+            <h1>Franchise Modules</h1>
+          </div>
+          <div class="contents">
+            <div class="selector">
+              <h1>MINI CAFÉ</h1>
+              <h1>PICCOLO COMMERCIAL</h1>
+              <h1>PICCOLO SPECIALTY</h1>
+              <h1>MASTER FRANCHISE</h1>
+            </div>
+            <div class="displayImg">
+              <img src="/imgs/mini cafe.png" alt="">
+            </div>
+            <div class="information">
+              <div class="cNc infoBloc">
+                <h1>Concept & Capacity</h1>
+                <ul>
+                  <li>This model entirely focuses on “A quick coffee run” & “easy to grab quick bytes”</li>
+                  <li>Consists of no seating to minimal seating of 2-12 people</li>
+                </ul>
+              </div>
+              <div class="setupEss infoBloc">
+                <h1>SetUp Essentials</h1>
+                <ul>
+                  <li>The expected franchise budget is INR 30,000,00 onwards</li>
+                  <li>The minimum area requirement for the model is 250sq.ft</li>
+                  <li>This model requires a minimum staff of 4 baristas 2 Housekeeping / Helper.</li>
+                </ul>
+              </div>
+              <div class="btb infoBloc">
+                <h1>Beyond The Basics</h1>
+                <ul>
+                  <li>It includes coffee equipments, furniture, store design and other expenses, breakdown of which will be provided after inspections and calculations of scope of work based on area of site. The outer seating/service space’s extra furniture, decor and landscaping charges of area outside of the store premises are to be decided by owner.</li>
+                </ul>
+              </div>
+              <div class="gNg infoBloc">
+                <h1>Growth & Gains</h1>
+                <ul>
+                  <li>The estimate net profit on sale could be around 35%.</li>
+                  <li>Expected Break-even could be around 14-18 months.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <script type="module">
+            // Importing the libraries
+import Lenis from "@studio-freight/lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Lenis js
+
+const lenisJs = () => {
+  const lenis = new Lenis();
+
+  lenis.on("scroll", (e) => {});
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 500);
+  });
+
+  gsap.ticker.lagSmoothing(0);
+};
+lenisJs();
+            
+const page4Animations = () => {
+let selectors = document.querySelectorAll(".selector h1");
+let displayImg = document.querySelector(".displayImg img");
+
+let selectedIndex = 0;
+
+// List of image paths (order matches the <h1>s)
+let imageSources = [
+  "/imgs/mini cafe.png",
+  "/imgs/piccolo commercial.png",
+  "/imgs/piccolo specialty.jpg",
+  "/imgs/master franchise.png"
+];
+
+// Set initial styles and image
+selectors[selectedIndex].style.backgroundColor = "#fff";
+selectors[selectedIndex].style.color = "#096556";
+displayImg.src = imageSources[selectedIndex];
+
+selectors.forEach((selector, index) => {
+  selector.addEventListener("click", () => {
+    if (selectedIndex === index) return;
+
+    let tl = gsap.timeline();
+
+    // Animate previous
+    tl.to(selectors[selectedIndex], {
+      backgroundColor: "#096556",
+      color: "#fff",
+    }, "a");
+
+    // Animate current
+    tl.to(selector, {
+      backgroundColor: "#fff",
+      color: "#096556",
+    }, "a");
+
+    // Update image
+    displayImg.src = imageSources[index];
+
+    selectedIndex = index;
+  });
+});
+
+
+};
+page4Animations();
+        </script>
+</body>
+</html>
