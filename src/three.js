@@ -164,9 +164,8 @@ const loadingManager = new THREE.LoadingManager(
         preloaderAnimation(); 
     setTimeout(() => {
       afterLoadedTheContent(); 
-    }, 3500);
+    }, 2500);
 
-    afterLoadedTheContent();
     },
     //Progress
     ( itemUrl, itemsLoaded, itemsTotal )=>{
