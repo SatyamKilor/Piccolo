@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -182,7 +183,7 @@ const isMobile = window.innerWidth < 768;
 
 
 let model = null
-loader.load('./models/Cup.glb', (gltf) => {
+loader.load('./models/Test.glb', (gltf) => {
     model = gltf.scene.children[0];
 
     // Traverse the model and smooth the normals
